@@ -6,7 +6,7 @@
 
     <context-param>
         <param-name>CONNECTION_STRING</param-name>
-        <param-value>jdbc:postgresql://localhost:5433/DemoJdbc</param-value>
+        <param-value>jdbc:postgresql://localhost:5433/DemoServlet</param-value>
     </context-param>
     <context-param>
         <param-name>DB_USER</param-name>

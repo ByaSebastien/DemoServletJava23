@@ -20,7 +20,6 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     public void init() {
-
     }
 
     @Override
@@ -47,7 +46,6 @@ public class RegisterServlet extends HttpServlet {
                 return;
             }
             request.setAttribute("errorMessage", "Password not the same");
-
         } catch (RuntimeException e) {
             request.setAttribute("errorMessage", e.getMessage());
         }
@@ -59,6 +57,5 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     public void destroy() {
-
     }
 }
