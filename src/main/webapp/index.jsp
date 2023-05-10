@@ -10,6 +10,7 @@
         <h<%=i%>>Mon titre</h<%=i%>>
     <% } %>
     <br/>
+    <a href="book">Book</a>
     <a href="register">register</a>
     <a href="login">login</a>
 </body>
