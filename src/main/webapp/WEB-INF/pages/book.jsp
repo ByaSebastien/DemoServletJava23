@@ -19,6 +19,7 @@
 <body>
     <jsp:include page="header.jsp"/>
     <h2>Book!!!</h2>
+    <a href="addBook">Ajouter un nouveau livre</a>
     <table>
         <thead>
             <tr>

@@ -31,7 +31,7 @@ public abstract class BaseRepositoryImpl<TEntity> implements BaseRepository<TEnt
     @Override
     public TEntity getOne(Integer id) {
         try {
-            Connection conn = DatabaseConnectionManager.getConnection();
+            Connection conn = DatabaseConnectionManager.openConnection();
 
             PreparedStatement psmt = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE " + columnIdName + " = ?");
 
@@ -53,7 +53,7 @@ public abstract class BaseRepositoryImpl<TEntity> implements BaseRepository<TEnt
     @Override
     public List<TEntity> getMany() {
         try {
-            Connection conn = DatabaseConnectionManager.getConnection();
+            Connection conn = DatabaseConnectionManager.openConnection();
             Statement smt = conn.createStatement();
             ResultSet rs = smt.executeQuery("SELECT * FROM " + tableName);
 
@@ -82,7 +82,7 @@ public abstract class BaseRepositoryImpl<TEntity> implements BaseRepository<TEnt
     public boolean delete(Integer id) {
 
         try {
-            Connection conn = DatabaseConnectionManager.getConnection();
+            Connection conn = DatabaseConnectionManager.openConnection();
             PreparedStatement psmt = conn.prepareStatement("DELETE FROM " + tableName + " WHERE " + columnIdName + " = ?");
             psmt.setInt(1,id);
 

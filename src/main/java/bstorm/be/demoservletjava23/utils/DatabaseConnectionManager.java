@@ -19,7 +19,7 @@ public class DatabaseConnectionManager {
 
     private static Connection connection;
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection openConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(CONNECTION_STRING, DB_USER, DB_PASSWORD);
         }

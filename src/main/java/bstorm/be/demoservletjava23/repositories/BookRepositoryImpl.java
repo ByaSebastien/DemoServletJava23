@@ -34,7 +34,7 @@ public class BookRepositoryImpl extends BaseRepositoryImpl<Book> implements Book
     public Book add(Book book){
 
         try{
-            Connection conn = DatabaseConnectionManager.getConnection();
+            Connection conn = DatabaseConnectionManager.openConnection();
             PreparedStatement psmt = conn.prepareStatement("INSERT INTO BOOK (TITLE,DESCRIPTION,AUTHOR_ID) VALUES (?,?,?) RETURNING *");
             psmt.setString(1, book.getTitle());
             psmt.setString(2, book.getDescription());
@@ -55,7 +55,7 @@ public class BookRepositoryImpl extends BaseRepositoryImpl<Book> implements Book
     public boolean update(Integer id, Book book) {
 
         try {
-            Connection conn = DatabaseConnectionManager.getConnection();
+            Connection conn = DatabaseConnectionManager.openConnection();
             PreparedStatement psmt = conn.prepareStatement("UPDATE BOOK SET TITLE = ?, DESCRIPTION = ?, AUTHOR_ID = ? WHERE BOOK_ID = ?");
             psmt.setString(1,book.getTitle());
             psmt.setString(2, book.getDescription());
