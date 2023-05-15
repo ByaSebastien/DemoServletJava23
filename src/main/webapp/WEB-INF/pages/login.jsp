@@ -16,7 +16,8 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <jsp:include page="header.jsp"/>
+    <h2>Login</h2>
     <form method="post" action="login">
         <label for="login">Login : </label>
         <input type="text" id="login" name="login" value="${login}">

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="bstorm.be.demoservletjava23.domain.dtos.BookDTO" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
@@ -16,6 +17,8 @@
     <title>Book</title>
 </head>
 <body>
+    <jsp:include page="header.jsp"/>
+    <h2>Book!!!</h2>
     <table>
         <thead>
             <tr>
@@ -24,12 +27,18 @@
             </tr>
         </thead>
         <tbody>
-            <% for (BookDTO b : (List<BookDTO>)request.getAttribute("books")){ %>
-            <tr>
-                <td><%=b.getTitle()%></td>
-                <td><%=b.getDescription()%></td>
-            </tr>
-            <% } %>
+<%--            <% for (BookDTO b : (List<BookDTO>)request.getAttribute("books")){ %>--%>
+<%--            <tr>--%>
+<%--                <td><%=b.getTitle()%></td>--%>
+<%--                <td><%=b.getDescription()%></td>--%>
+<%--            </tr>--%>
+<%--            <% } %>--%>
+            <c:forEach items="${books}" var="book">
+                <tr>
+                    <td>${book.title}</td>
+                    <td>${book.description}</td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </body>

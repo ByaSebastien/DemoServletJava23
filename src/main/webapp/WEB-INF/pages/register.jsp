@@ -15,7 +15,8 @@
     <title>Register</title>
 </head>
 <body>
-    <h1>Register</h1>
+    <jsp:include page="header.jsp"/>
+    <h2>Register</h2>
     <form method="post" action="register">
         <label for="username">Username : </label>
         <input type="text" id="username" name="username" value="${username}">

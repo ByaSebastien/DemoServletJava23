@@ -5,7 +5,8 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Hello ${connectedUser.username}!</h1>
+    <jsp:include page="WEB-INF/pages/header.jsp"/>
+    <h2>Hello ${connectedUser.username}!</h2>
     <% for(int i = 1; i<= 6; i++){ %>
         <h<%=i%>>Mon titre</h<%=i%>>
     <% } %>
