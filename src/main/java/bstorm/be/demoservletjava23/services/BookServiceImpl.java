@@ -64,5 +64,11 @@ public class BookServiceImpl implements BookService {
         return bookRepository.update(id, book);
     }
 
+    @Override
+    public boolean delete(Integer id) {
+
+        return bookRepository.delete(id);
+    }
+
 
 }

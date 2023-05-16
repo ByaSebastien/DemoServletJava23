@@ -44,6 +44,10 @@
                             <input type="text" value="${book.id}" hidden="hidden" name="id"/>
                             <button type="submit">Modifier</button>
                         </form>
+                        <form method="post" action="deleteBook">
+                            <input type="text" value="${book.id}" hidden="hidden" name="id"/>
+                            <button type="submit">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>

@@ -21,7 +21,7 @@
             <label for="title">Titre : </label>
             <input type="text" id="title" name="title" value="${title}">
             <label for="description">Description : </label>
-            <input type="text" id="description" name="description" value="${description}">
+            <textarea type="text" id="description" name="description" cols="30" rows="10">${description}</textarea>
             <select id="authorId" name="authorId">
                 <option value=""></option>
                 <c:forEach items="${authors}" var="author">
@@ -34,17 +34,19 @@
                     </c:if>
                 </c:forEach>
             </select>
-            <button type="button" name="+" id="switchButton" onclick="switchFormType()"> ➕</button>
-        </fieldset>
-        <br>
-        <fieldset class="hidden" id="authorForm">
-            <label for="firstname">Prenom : </label>
-            <input type="text" id="firstname" name="firstname" value="${firstname}">
-            <label for="lastname">Nom : </label>
-            <input type="text" id="lastname" name="lastname" value="${lastname}">
-            <label for="pseudo">Pseudo : </label>
-            <input type="text" id="pseudo" name="pseudo" value="${pseudo}" }>
-        </fieldset>
+            <c:if test="${id == null}">
+                <button type="button" name="+" id="switchButton" onclick="switchFormType()"> ➕</button>
+                </fieldset>
+                <br>
+                <fieldset class="hidden" id="authorForm">
+                    <label for="firstname">Prenom : </label>
+                    <input type="text" id="firstname" name="firstname" value="${firstname}">
+                    <label for="lastname">Nom : </label>
+                    <input type="text" id="lastname" name="lastname" value="${lastname}">
+                    <label for="pseudo">Pseudo : </label>
+                    <input type="text" id="pseudo" name="pseudo" value="${pseudo}" }>
+                </fieldset>
+        </c:if>
         <c:if test="${id == null}">
             <button type="submit">Ajouter</button>
         </c:if>

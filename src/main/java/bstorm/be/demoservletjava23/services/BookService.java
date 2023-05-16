@@ -13,4 +13,6 @@ public interface BookService {
     Book add(Book book);
 
     boolean update(Integer id,Book book);
+
+    boolean delete(Integer id);
 }
