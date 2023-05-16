@@ -68,6 +68,5 @@ public class ModifyBookServlet extends HttpServlet {
             System.out.println(e.getMessage());
             doGet(request,response);
         }
-
     }
 }
