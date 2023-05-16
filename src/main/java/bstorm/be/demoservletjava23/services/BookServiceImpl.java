@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 
     BookRepository bookRepository = new BookRepositoryImpl();
     AuthorRepository authorRepository = new AuthorRepositoryImpl();
@@ -23,26 +23,45 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
+    public Book getOne(Integer id) {
+
+        return bookRepository.getOne(id);
+    }
+
+    @Override
     public Book add(Book book) {
 
         try {
             Connection conn = DatabaseConnectionManager.openConnection();
-            conn.setAutoCommit(false);
-            if(book.getAuthor() != null){
-                int id = authorRepository.add(book.getAuthor()).getId();
-                book.setAuthorId(id);
+            try {
+
+                conn.setAutoCommit(false);
+                if (book.getAuthor() != null) {
+                    int id = authorRepository.add(book.getAuthor()).getId();
+                    book.setAuthorId(id);
+                }
+
+                Book newBook = bookRepository.add(book);
+
+                conn.commit();
+                conn.setAutoCommit(true);
+                DatabaseConnectionManager.closeConnection();
+                return newBook;
+            } catch (SQLException e) {
+                conn.rollback();
+                DatabaseConnectionManager.closeConnection();
+                throw new RuntimeException();
             }
-
-            Book newBook = bookRepository.add(book);
-
-            DatabaseConnectionManager.closeConnection();
-            conn.commit();
-            conn.setAutoCommit(true);
-            return newBook;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public boolean update(Integer id, Book book) {
+
+        return bookRepository.update(id, book);
     }
 
 

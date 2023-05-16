@@ -8,5 +8,9 @@ public interface BookService {
 
     List<Book> getMany();
 
+    Book getOne(Integer id);
+
     Book add(Book book);
+
+    boolean update(Integer id,Book book);
 }

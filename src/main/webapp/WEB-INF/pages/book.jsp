@@ -25,6 +25,7 @@
             <tr>
                 <th>Titre</th>
                 <th>Description</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +39,12 @@
                 <tr>
                     <td>${book.title}</td>
                     <td>${book.description}</td>
+                    <td>
+                        <form method="get" action="modifyBook">
+                            <input type="text" value="${book.id}" hidden="hidden" name="id"/>
+                            <button type="submit">Modifier</button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>

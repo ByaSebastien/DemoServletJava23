@@ -43,7 +43,6 @@ public class BookRepositoryImpl extends BaseRepositoryImpl<Book> implements Book
             if(!rs.next())
                 throw new EntityNotFoundException();
 
-            DatabaseConnectionManager.closeConnection();
             return buildEntity(rs);
 
         } catch (SQLException e) {
